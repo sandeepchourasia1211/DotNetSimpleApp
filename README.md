@@ -1,0 +1,2 @@
+# DotNetSimpleApp
+Simple ConsoleApp
