@@ -85,42 +85,42 @@ public class Employee
 
 #endregion
 
-//#region M:M Relationship
-//[Table("Student")]
-//public class Student
-//{
-//    [Key]
-//    public int Sid { get; set; }
-//    public string? Name { get; set; }
-//    public List<StudentCourse>? StudentCourses { get; set; }
-//}
+#region M:M Relationship
+[Table("Student")]
+public class Student
+{
+    [Key]
+    public int Sid { get; set; }
+    public string? Name { get; set; }
+    public List<StudentCourse>? StudentCourses { get; set; }
+}
 
-//[Table("Course")]
-//public class Course
-//{
-//    [Key]
-//    public int Cid { get; set; }
-//    public string? CName { get; set; }
-//    public List<StudentCourse>? StudentCourses { get; set; }
-//}
+[Table("Course")]
+public class Course
+{
+    [Key]
+    public int Cid { get; set; }
+    public string? CName { get; set; }
+    public List<StudentCourse>? StudentCourses { get; set; }
+}
 
-//[Table("StudentCourse")]
-//public class StudentCourse
-//{
-//    [Key]
-//    public int SCId { get; set; }
+[Table("StudentCourse")]
+public class StudentCourse
+{
+    [Key]
+    public int SCId { get; set; }
 
-//    [ForeignKey("Student")]
-//    public int Sid { get; set; }
+    [ForeignKey("Student")]
+    public int Sid { get; set; }
 
-//    public Student? Student { get; set; }
+    public Student? Student { get; set; }
 
-//    [ForeignKey("Course")]
-//    public int Cid { get; set; }
+    [ForeignKey("Course")]
+    public int Cid { get; set; }
 
-//    public Course? Course { get; set; }
-//}
-//#endregion
+    public Course? Course { get; set; }
+}
+#endregion
 #endregion
 
 //Step - 3 Creating DbContext Class
@@ -138,9 +138,9 @@ public class OrganizationDbContext : DbContext
     public DbSet<Employee> Employees { get; set; }
 
 
-    //public DbSet<Student> Students { get; set; }
-    //public DbSet<Course> Courses { get; set; }
-    //public DbSet<StudentCourse> StudentCourses { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<StudentCourse> StudentCourses { get; set; }
 }
 
 //Step - 6 Generating Database and Tables
@@ -149,45 +149,45 @@ public class OrganizationDbContext : DbContext
 //2. update-database 
 #endregion
 
-//#region Project_Module Design
-//[Table("Project")]
-//public class Project
-//{
-//    [Key]
-//    public int Pid { get; set; }
-//    public string ProjectName { get; set; }
+#region Project_Module Design
+[Table("Project")]
+public class Project
+{
+    [Key]
+    public int Pid { get; set; }
+    public string ProjectName { get; set; }
 
-//    public List<Module> Modules { get; set; }
-//}
+    public List<Module> Modules { get; set; }
+}
 
-//[Table("Module")]
-//public class Module
-//{
-//    [Key]
-//    public int Mid { get; set; }
-//    public string ModuleName { get; set; }
+[Table("Module")]
+public class Module
+{
+    [Key]
+    public int Mid { get; set; }
+    public string ModuleName { get; set; }
 
-//    [ForeignKey("ProjectNvg")]
-//    public int Pid { get; set; }
-//    public virtual Project ProjectNvg { get; set; }
+    [ForeignKey("ProjectNvg")]
+    public int Pid { get; set; }
+    public virtual Project ProjectNvg { get; set; }
 
-//    public List<Task> Tasks { get; set; }
-//}
+    public List<Task> Tasks { get; set; }
+}
 
-//[Table("Task")]
-//public class Task
-//{
-//    [Key]
-//    public int Tid { get; set; }
-//    public string TaskName { get; set; }
+[Table("Task")]
+public class Task
+{
+    [Key]
+    public int Tid { get; set; }
+    public string TaskName { get; set; }
 
-//    [ForeignKey("ModuleNvg")]
-//    public int Mid { get; set; }
-//    public virtual Module ModuleNvg { get; set; }
+    [ForeignKey("ModuleNvg")]
+    public int Mid { get; set; }
+    public virtual Module ModuleNvg { get; set; }
 
-//    [ForeignKey("EmployeeNvg")]
-//    public int Eid { get; set; }
-//    public virtual Employee EmployeeNvg { get; set; }
-//}
+    [ForeignKey("EmployeeNvg")]
+    public int Eid { get; set; }
+    public virtual Employee EmployeeNvg { get; set; }
+}
 
-//#endregion
+#endregion
